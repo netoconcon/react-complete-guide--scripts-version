@@ -1,25 +1,29 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import './App.css';
 import Person from './Person/Person';
 
-class App extends Component {
-  state = {
+const app = props => {
+  const [personsState, setPersonsState] = useState ({
     persons: [
       { name: 'Max', age: 28},
       { name: 'Manu', age: 29}
-    ]
-  }
+      ],
+      otherState: 'other state'
+  });
 
-  switchNameHandler = () => {
+  console.log(personsState);
+
+  const switchNameHandler = () => {
     // console.log('was clicked');
     // this.state.persons[0].name = "Maximilian"; DO NOT DO THIS
-    this.setState({ persons: [
+    setPersonsState({ 
+      persons: [
       { name: 'Maximilan', age: 29},
       { name: 'Manuela', age: 30}
-    ]})
+    ],})
   };
-  
-  render() {
+
+
     return (
       <div className="App">
         <h1>I am React App</h1>
@@ -31,6 +35,9 @@ class App extends Component {
       </div>
     );
   }
-}
 
-export default App;
+export default app;
+
+
+
+
